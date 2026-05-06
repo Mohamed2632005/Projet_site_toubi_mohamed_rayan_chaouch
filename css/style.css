@@ -1,0 +1,845 @@
+/* =============================================
+   FootStyle — Feuille de style principale
+   Thème sombre, accent vert, police Poppins
+   ============================================= */
+
+/* --- Variables de couleurs --- */
+:root {
+  --bg:           #0b0b0f;
+  --surface:      #13131a;
+  --surface-2:    #1a1a24;
+  --border:       #2a2a3a;
+  --accent:       #00c875;
+  --accent-dark:  #009a5a;
+  --accent-light: rgba(0, 200, 117, 0.12);
+  --text:         #f0f0f8;
+  --text-muted:   #8890a4;
+  --danger:       #ff4d5e;
+  --danger-dark:  #d93649;
+  --warning:      #ffb347;
+  --font:         'Poppins', sans-serif;
+  --radius:       12px;
+  --radius-sm:    8px;
+  --shadow:       0 4px 24px rgba(0, 0, 0, 0.45);
+  --transition:   0.2s ease;
+}
+
+/* --- Reset de base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--accent-dark); }
+
+ul { list-style: none; }
+
+img { max-width: 100%; display: block; }
+
+/* --- Conteneur centré --- */
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* =============================================
+   NAVIGATION
+   ============================================= */
+.nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-logo:hover { color: var(--text); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition), color var(--transition);
+}
+.nav-links a:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* Badge panier */
+.nav-panier { position: relative; }
+.panier-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: var(--accent);
+  color: #000;
+  font-size: 0.65rem;
+  font-weight: 700;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
+
+/* =============================================
+   MAIN / LAYOUT
+   ============================================= */
+.main {
+  flex: 1;
+  padding: 40px 0 60px;
+}
+
+/* =============================================
+   BOUTONS
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background var(--transition), transform var(--transition), opacity var(--transition);
+  text-decoration: none;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #000;
+}
+.btn-primary:hover { background: var(--accent-dark); color: #000; }
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover { background: var(--danger-dark); color: #fff; }
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.btn-outline:hover { background: var(--accent-light); }
+
+.btn-ghost {
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+.btn-ghost:hover { color: var(--text); background: var(--border); }
+
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.8rem;
+}
+
+.btn-lg {
+  padding: 14px 32px;
+  font-size: 1rem;
+}
+
+.btn-block { width: 100%; }
+
+/* =============================================
+   ALERTES / MESSAGES
+   ============================================= */
+.alert {
+  padding: 14px 18px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.alert-success {
+  background: var(--accent-light);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.alert-danger {
+  background: rgba(255, 77, 94, 0.12);
+  border: 1px solid var(--danger);
+  color: var(--danger);
+}
+.alert-warning {
+  background: rgba(255, 179, 71, 0.12);
+  border: 1px solid var(--warning);
+  color: var(--warning);
+}
+
+/* =============================================
+   TITRES DE PAGE
+   ============================================= */
+.page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.page-subtitle {
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+/* =============================================
+   FORMULAIRES
+   ============================================= */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.form-sub {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 28px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--text-muted);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+.form-group select option { background: var(--surface-2); }
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* =============================================
+   HERO (index.php)
+   ============================================= */
+.hero {
+  background: linear-gradient(135deg, var(--surface) 0%, #0d1a12 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 80px 40px;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center top, rgba(0,200,117,0.08) 0%, transparent 70%);
+}
+
+.hero-label {
+  display: inline-block;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 50px;
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto 32px;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* =============================================
+   GRILLE MAILLOTS (catalogue + index)
+   ============================================= */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.maillots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.maillot-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+.maillot-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px rgba(0, 200, 117, 0.12);
+}
+
+.maillot-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  background: var(--surface-2);
+}
+
+.maillot-card-body {
+  padding: 16px;
+}
+.maillot-card-equipe {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+.maillot-card-nom {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+.maillot-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.maillot-card-prix {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.maillot-card-stock {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* =============================================
+   FILTRE CATALOGUE
+   ============================================= */
+.filtre-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.filtre-bar a {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+.filtre-bar a:hover,
+.filtre-bar a.actif {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+}
+
+/* =============================================
+   FICHE MAILLOT
+   ============================================= */
+.maillot-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.maillot-img-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.maillot-img-wrap img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+.maillot-info-equipe {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.maillot-info h1 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.maillot-info-prix {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.maillot-info-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+.maillot-stock {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 28px;
+}
+
+.perso-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+.perso-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* =============================================
+   PANIER
+   ============================================= */
+.panier-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 28px;
+  align-items: start;
+}
+
+.panier-table {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.panier-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.panier-table th {
+  background: var(--surface-2);
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.panier-table td {
+  padding: 16px 18px;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+  vertical-align: middle;
+}
+
+.panier-maillot-info .equipe {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.panier-maillot-info .nom {
+  font-weight: 600;
+}
+.panier-maillot-info .perso {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.panier-resume {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.panier-resume h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.resume-ligne {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  color: var(--text-muted);
+}
+.resume-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-top: 14px;
+  margin-bottom: 20px;
+}
+
+/* =============================================
+   TABLES (admin + commandes)
+   ============================================= */
+.table-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-card th {
+  background: var(--surface-2);
+  padding: 14px 18px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.table-card td {
+  padding: 14px 18px;
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+  vertical-align: middle;
+}
+.table-card tr:hover td { background: var(--surface-2); }
+
+/* =============================================
+   BADGES DE STATUT
+   ============================================= */
+.badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge-green  { background: var(--accent-light); color: var(--accent); }
+.badge-yellow { background: rgba(255,179,71,.12); color: var(--warning); }
+.badge-red    { background: rgba(255,77,94,.12);  color: var(--danger); }
+.badge-gray   { background: var(--surface-2);     color: var(--text-muted); }
+
+/* =============================================
+   DASHBOARD ADMIN (stats)
+   ============================================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin-bottom: 40px;
+}
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color var(--transition);
+}
+.stat-card:hover { border-color: var(--accent); }
+.stat-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.stat-unit {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Admin nav rapide */
+.admin-nav {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+/* =============================================
+   MON COMPTE
+   ============================================= */
+.compte-header {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.compte-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #000;
+  flex-shrink: 0;
+}
+.compte-nom {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+.compte-email { color: var(--text-muted); font-size: 0.9rem; }
+.compte-role {
+  margin-top: 6px;
+}
+
+/* Historique commandes */
+.commande-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 14px;
+}
+.commande-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.commande-id { font-weight: 700; font-size: 0.95rem; }
+.commande-date { color: var(--text-muted); font-size: 0.82rem; }
+.commande-total {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.commande-lignes { font-size: 0.82rem; color: var(--text-muted); margin-top: 6px; }
+
+/* =============================================
+   PAGE VIDE (état vide)
+   ============================================= */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+.empty-state .empty-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.4;
+}
+.empty-state p { margin-bottom: 24px; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  text-align: center;
+}
+.footer-inner { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.footer-logo  { font-size: 1.3rem; font-weight: 800; color: var(--text); }
+.footer-logo span { color: var(--accent); }
+.footer-text  { color: var(--text-muted); font-size: 0.85rem; }
+.footer-copy  { color: var(--border); font-size: 0.78rem; }
+
+/* =============================================
+   UTILITAIRES
+   ============================================= */
+.text-accent  { color: var(--accent); }
+.text-muted   { color: var(--text-muted); }
+.text-danger  { color: var(--danger); }
+.text-center  { text-align: center; }
+.mt-8  { margin-top: 8px; }
+.mt-16 { margin-top: 16px; }
+.mt-24 { margin-top: 24px; }
+.mb-24 { margin-bottom: 24px; }
+.d-flex { display: flex; }
+.gap-8  { gap: 8px; }
+.gap-12 { gap: 12px; }
+.align-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+
+/* =============================================
+   RESPONSIVE (tablette / mobile)
+   ============================================= */
+@media (max-width: 768px) {
+  .nav-links {
+    gap: 4px;
+  }
+  .nav-links a {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
+  .hero { padding: 50px 20px; }
+  .hero h1 { font-size: 1.8rem; }
+
+  .maillot-detail {
+    grid-template-columns: 1fr;
+  }
+  .maillot-img-wrap img { height: 280px; }
+
+  .panier-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+
+  .compte-header { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .nav-links .btn-sm { display: none; }
+  .maillots-grid { grid-template-columns: 1fr 1fr; }
+  .stats-grid { grid-template-columns: 1fr; }
+}
